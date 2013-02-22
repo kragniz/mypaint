@@ -320,6 +320,8 @@ class Window (windowing.MainWindow, layout.MainWindow):
 
     def gtk_input_dialog_cb(self, action):
         d = gtk.InputDialog()
+        close_button = d.get_child().get_children()[2].get_children()[1]
+        close_button.connect("clicked", lambda c: d.destroy())
         d.show()
 
     def _get_active_doc(self):
